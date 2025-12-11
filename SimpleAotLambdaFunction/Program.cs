@@ -4,15 +4,16 @@ using Amazon.Lambda.Serialization.SystemTextJson;
 using System.Text.Json.Serialization;
 using SimpleAotLambdaFunction;
 
-[assembly: LambdaSerializer(typeof(SourceGeneratorLambdaJsonSerializer<MyJsonSerializerContext>))]
+[assembly: LambdaSerializer(typeof(SourceGeneratorLambdaJsonSerializer<AotJsonSerializerContext>))]
 
 namespace SimpleAotLambdaFunction;
 
 [JsonSerializable(typeof(string))] // Add all types your Lambda serializes
 [JsonSerializable(typeof(EmptyEvent))]
-public partial class MyJsonSerializerContext : JsonSerializerContext;
+public partial class AotJsonSerializerContext : JsonSerializerContext;
 
 // If we directly invoke this lambda with no input, this empty class matches that input.
+// Anything else that needs to be serialized will also have to be defined here.
 public class EmptyEvent;
 
 internal class Program
@@ -25,7 +26,7 @@ internal class Program
             return $"Hello from Native AOT! Input was '{input}'";
         };
 
-        var serializer = new SourceGeneratorLambdaJsonSerializer<MyJsonSerializerContext>();
+        var serializer = new SourceGeneratorLambdaJsonSerializer<AotJsonSerializerContext>();
 
         using var bootstrap = LambdaBootstrapBuilder.Create(handler, serializer).Build();
         await bootstrap.RunAsync();
