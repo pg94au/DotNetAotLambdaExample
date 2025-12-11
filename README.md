@@ -28,7 +28,8 @@ You can also host this function locally in Docker to test it:
 1. Navigate to directory containing function.zip (created in previous section).
 2. Start running function in AWS Lambda container:
    ```bash
-   docker run --rm -p 9000:8080 --platform=linux/amd64 -v <path to function.zip>:/var/runtime public.ecr.aws/lambda/provided:al2023 ./bootstrap
+   cd <directory containing function.zip>
+   docker run --rm -p 9000:8080 --platform=linux/amd64 -v .:/var/runtime public.ecr.aws/lambda/provided:al2023 ./bootstrap
    ```
 3. Invoke the lambda from another shell:
    ```bash
