@@ -1,22 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <TargetFramework>net8.0</TargetFramework>
-    <PublishAot>true</PublishAot>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
-    <IlcDisableReflection>false</IlcDisableReflection>
-    <OutputType>Exe</OutputType>
-  </PropertyGroup>
+	<PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<TargetFramework>net8.0</TargetFramework>
+		<PublishAot>true</PublishAot>
+		<StripSymbols>true</StripSymbols>
+		<TrimMode>partial</TrimMode>
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+		<IlcDisableReflection>false</IlcDisableReflection>
+		<SelfContained>true</SelfContained>
+		<EnableAotAnalyzer>true</EnableAotAnalyzer>
+		<IsTrimmable>true</IsTrimmable>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <InvariantGlobalization>true</InvariantGlobalization>
-  </PropertyGroup>
+	<PropertyGroup>
+		<InvariantGlobalization>true</InvariantGlobalization>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.14.1" />
-    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.14.1" />
+		<PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
+	</ItemGroup>
 
 </Project>
