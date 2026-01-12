@@ -16,7 +16,7 @@ To build and deploy:
    cp SimpleAotLambdaFunction bootstrap
    zip function.zip bootstrap
    ```
-4. Create Lambda function in AWS (ie. named AotLambda).  Specify Amazon Linux 2023 runtime.
+4. Create Lambda function in AWS (ie. named AotLambda).  Specify .NET 8 (C#/F#/PowerShell) runtime.  (Note AL2023 will not function correctly for all AOT applications.)
 5. From Code tab, upload function.zip.
 6. Invoke the lambda function from AWS CLI:
    ```bash
